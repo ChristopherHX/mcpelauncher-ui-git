@@ -50,7 +50,9 @@ prepare() {
   git config submodule.playdl-signin-ui-qt.url $srcdir/playdl-signin-ui-qt
   git config submodule.mcpelauncher-ui-qt.url $srcdir/mcpelauncher-ui-qt
   git submodule update file-util axml-parser mcpelauncher-apkinfo mcpelauncher-extract google-play-api playdl-signin-ui-qt mcpelauncher-ui-qt
-  cd mcpelauncher-ui-qt
+  cd playdl-signin-ui-qt
+  git checkout master
+  cd ../mcpelauncher-ui-qt
   git submodule init
   git config submodule.Resources/proprietary.url $srcdir/mcpelauncher-proprietary
   git submodule update Resources/proprietary
