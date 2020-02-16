@@ -7,7 +7,7 @@ arch=('x86_64' 'i686')
 url="https://github.com/ChristopherHX/mcpelauncher-ui-manifest"
 license=('GPL3', 'MIT')
 makedepends=('git' 'cmake')
-depends=('qt5-base' 'qt5-webengine' 'qt5-declarative' 'qt5-quickcontrols' 'qt5-quickcontrols2' 'qt5-svg' 'libzip' 'protobuf' 'mcpelauncher-client')
+depends=('qt5-base' 'qt5-webengine' 'qt5-declarative' 'qt5-quickcontrols' 'qt5-quickcontrols2' 'qt5-svg' 'libzip' 'protobuf' 'libuv' 'mcpelauncher-client')
 provides=('mcpelauncher-ui')
 conflicts=('mcpelauncher-ui')
 source=(
@@ -26,11 +26,7 @@ pkgver() {
 prepare() {
   cd mcpelauncher-ui-manifest
   git remote set-url origin https://github.com/ChristopherHX/mcpelauncher-ui-manifest
-  git submodule init
-  git submodule update
-  cd mcpelauncher-ui-qt
-  git submodule init
-  git submodule update
+  git submodule update --init --recursive
 }
 build() {
   cd mcpelauncher-ui-manifest
