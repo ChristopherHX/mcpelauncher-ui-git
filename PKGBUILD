@@ -33,7 +33,7 @@ build() {
   cd mcpelauncher-ui-manifest
   mkdir -p build
   cd build
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS="-DISABLE_64BIT=1" ..
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS="-DDISABLE_64BIT=1" ..
   make
 }
 package() {
