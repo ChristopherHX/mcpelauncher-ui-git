@@ -11,7 +11,7 @@ depends=('qt5-base' 'qt5-webengine' 'qt5-declarative' 'qt5-quickcontrols' 'qt5-q
 provides=('mcpelauncher-ui')
 conflicts=('mcpelauncher-ui')
 source=(
-  'git://github.com/minecraft-linux/mcpelauncher-ui-manifest.git'
+  'git://github.com/minecraft-linux/mcpelauncher-ui-manifest.git#ng'
   'nlohmann_json_license.txt::https://raw.githubusercontent.com/nlohmann/json/develop/LICENSE.MIT'
 )
 md5sums=(
@@ -26,14 +26,13 @@ pkgver() {
 prepare() {
   cd mcpelauncher-ui-manifest
   git remote set-url origin https://github.com/minecraft-linux/mcpelauncher-ui-manifest
-  git checkout ng
   git submodule update --init --recursive
 }
 build() {
   cd mcpelauncher-ui-manifest
   mkdir -p build
   cd build
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS="-DDISABLE_64BIT=1" ..
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release ..
   make
 }
 package() {
